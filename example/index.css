@@ -1,0 +1,36 @@
+.index {
+  width: 800px;
+  margin: 60px auto;
+}
+
+.index code {
+  color: #5bc0de;
+}
+
+.list li {
+  display: block;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.list a {
+  display: inline-block;
+  width: 160px;
+  height: 34px;
+  margin-right: 20px;
+  padding: 0;
+  line-height: 34px;
+  border: none;
+  outline: none;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  background-color: #337ab7;
+  cursor: pointer;
+}
+
+.list span {
+  display: inline-block;
+  height: 34px;
+  line-height: 34px;
+}

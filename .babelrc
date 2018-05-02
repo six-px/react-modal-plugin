@@ -1,0 +1,28 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            ">1%",
+            "last 4 versions",
+            "Firefox ESR",
+            "not ie < 9"
+          ],
+          "uglify": true
+        },
+        "useBuiltIns": false,
+        "modules": false
+      }
+    ],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-decorators-legacy",
+    ["import", { "style": "css", "libraryName": "antd-mobile" }]
+  ],
+  "comments": false
+}

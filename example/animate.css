@@ -1,0 +1,45 @@
+.alert {
+  width: 800px;
+  margin: 60px auto;
+}
+
+.alert code {
+  color: #5bc0de;
+}
+
+.handles li {
+  display: block;
+  list-style: none;
+}
+
+.handles button {
+  width: 200px;
+  height: 34px;
+  padding: 0;
+  line-height: 34px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #337ab7;
+  cursor: pointer;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.child {
+  animation: slidToTop 1s ease-in;
+}
+
+@keyframes slidToTop
+{
+  from {top: -50%}
+  to {top: 50%;}
+}

@@ -1,0 +1,60 @@
+.complex {
+  width: 800px;
+  margin: 60px auto;
+}
+
+.complex code {
+  color: #5bc0de;
+}
+
+.handles li {
+  display: block;
+  list-style: none;
+}
+
+.handles button {
+  width: 200px;
+  height: 34px;
+  padding: 0;
+  line-height: 34px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #337ab7;
+  cursor: pointer;
+}
+
+.form {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.formbutton {
+  display: inline-block;
+  width: 200px;
+  height: 34px;
+  padding: 0;
+  line-height: 34px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #337ab7;
+  cursor: pointer;
+}
+
+.formbutton.cancel {
+  background-color: #ccc;
+  color: #000;
+}
+
+.textcenter {
+  text-align: center;
+}
+
+.choose {
+  padding: 30px;
+}
