@@ -12,6 +12,7 @@ export default class Modal extends Component {
   static defaultProps = {
     children: <div />,
     show: false,
+    focus: true,
     parent: document.body,
     style: {
       position: 'absolute',
@@ -34,6 +35,7 @@ export default class Modal extends Component {
 
   static propTypes = {
     show: PropTypes.bool.isRequired,
+    focus: PropTypes.bool.isRequired,
     outsideClick: PropTypes.shape({
       callback: PropTypes.func,
     }),
@@ -159,10 +161,13 @@ export default class Modal extends Component {
   }
 
   setFocus = () => {
-    this.preFocus = document.activeElement
-    setTimeout(() => {
-      this.modal.focus()
-    }, 0)
+    const { focus } = this.props
+    if (focus) {
+      this.preFocus = document.activeElement
+      setTimeout(() => {
+        this.modal.focus()
+      }, 0)
+    }
   }
 
   open = () => {
@@ -199,12 +204,15 @@ export default class Modal extends Component {
   }
 
   backFocus = () => {
-    const activeEle = document.activeElement
-    const isFocus = (this.modal === activeEle) || this.modal.contains(activeEle)
-    if (isFocus && this.preFocus) {
-      setTimeout(() => {
-        this.preFocus.focus()
-      }, 0)
+    const { focus } = this.props
+    if (focus) {
+      const activeEle = document.activeElement
+      const isFocus = (this.modal === activeEle) || this.modal.contains(activeEle)
+      if (isFocus && this.preFocus) {
+        setTimeout(() => {
+          this.preFocus.focus()
+        }, 0)
+      }
     }
   }
 

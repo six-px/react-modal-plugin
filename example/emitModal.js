@@ -53,6 +53,7 @@ class Root extends React.Component {
 
     const modalProps = {
       show,
+      focus: false,
       emit: {
         target: this.state.emit,
         align,
