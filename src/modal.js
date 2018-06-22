@@ -1,3 +1,10 @@
+/**
+ * outside click 当点击目标点击后会立刻被移除，那么当click事件反馈到document时
+ * this.modal.contains(e.target) 始终为 false
+ * 那么改变 document  监听事件为 mousedown 则 outside click 触发时点击目标还没有被移除
+ * 可以通过配置参数设置监听事件？
+ */
+
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
@@ -82,7 +89,7 @@ export default class Modal extends Component {
     if (this.props.outsideClick && this.props.outsideClick.callback) {
       // 取消缓存回调函数
       this.outsideClickCallback = undefined
-      document.removeEventListener('click', this.onOutsideClick, false)
+      document.removeEventListener('mousedown', this.onOutsideClick, false)
     }
     if (this.closeTimer) {
       clearTimeout(this.closeTimer)
@@ -93,7 +100,7 @@ export default class Modal extends Component {
 
   // 模态框外面的点击事件
   onOutsideClick = (e) => {
-    if (this.outsideClickCallback && !this.parentIsModal(e.target)) {
+    if (this.outsideClickCallback && !this.modal.contains(e.target)) {
       this.outsideClickCallback()
     }
   }
@@ -269,25 +276,12 @@ export default class Modal extends Component {
     if (callback && isCall && show) {
       // 缓存回调函数
       this.outsideClickCallback = callback
-      document.addEventListener('click', this.onOutsideClick, false)
+      document.addEventListener('mousedown', this.onOutsideClick, false)
     } else if (callback && (!show || !isCall)) {
       // 取消缓存回调函数
       this.outsideClickCallback = undefined
-      document.removeEventListener('click', this.onOutsideClick, false)
+      document.removeEventListener('mousedown', this.onOutsideClick, false)
     }
-  }
-
-
-  // document click target's parent is it modal
-  // document 点击目标的父级是不是modal
-  parentIsModal(target) {
-    if (target === document) {
-      return false
-    }
-    if (target.id && target.id === this.modal.id) {
-      return true
-    }
-    return this.parentIsModal(target.parentNode)
   }
 
   render() {
