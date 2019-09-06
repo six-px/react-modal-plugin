@@ -21,6 +21,7 @@ export default class Modal extends Component {
     show: false,
     focus: true,
     parent: document.body,
+    parentScroll: false, // 是否需要父级别显示滚动条
     style: {
       position: 'absolute',
       top: 0,
@@ -143,7 +144,7 @@ export default class Modal extends Component {
       })
     }
     // 设置body有滚动条的情况
-    if (!emit && (this.modalStatus === 'open' || this.modalStatus === 'opening')) {
+    if (this.props.parentScroll === true || this.props.parent === document.body && !emit && (this.modalStatus === 'open' || this.modalStatus === 'opening')) {
       const winScroll = windowScroll()
       this.checkScrollbar()
       modal.style.top = `${parseInt(modal.style.top, 10) + winScroll.top}px`
@@ -182,6 +183,7 @@ export default class Modal extends Component {
       isShow: true,
     })
     this.modalStatus = 'open'
+    this.closeTimer && clearTimeout(this.closeTimer) // 当延迟关闭时modal还未关闭，又被重新open，取消延迟关闭
     this.setFocus()
   }
 
