@@ -1,8 +1,9 @@
+/* eslint-disable */
 /**
  * outside click 当点击目标点击后会立刻被移除，那么当click事件反馈到document时
  * this.modal.contains(e.target) 始终为 false
  * 那么改变 document  监听事件为 mousedown 则 outside click 触发时点击目标还没有被移除
- * 可以通过配置参数设置监听事件？
+ * 可以通过配置参数设置监听事件
  */
 
 import React, { Component } from 'react'
